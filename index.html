@@ -1,339 +1,578 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>My Presentation</title>
+    <title>MAT8186 &mdash; Cours 1</title>
 
-        <link rel="stylesheet" href="dist/reset.css">
-        <link rel="stylesheet" href="dist/reveal.css">
-        <link rel="stylesheet" href="dist/theme/mytheme.css" id="theme">
-    </head>
-    <body>
-        <div class="reveal">
-            <div class="slides">
-                <section class="cover">
-                    <h1>Title of the presentation</h1>
-                    <h2>Author</h2>
-                    <h3>Event</h3>
-                    <h3>Date</h3>
-                </section>
-                <section>
-                    <section class="title-slide">
-                        <h1>Theme of the next vertical slides</h1>
-                        <h2>Why not have a subtitle too?</h2>
-                    </section>
-                    <section>
-                        <h1>Title of the slide</h1>
-                        Some content in the form of an ordered list:
-                        <ol>
-                            <li>First very important point</li>
-                            <li>Second less important point</li>
-                        </ol>
-                    </section>
-                </section>
-                <section>
-                    <h1>Code</h1>
-                    <p>Are you ready for some awesome <code class="julia">content = "code"</code>?</p>
-                    <pre class="julia"><code data-trim>
-test = 41 + 1
-function ret42(x::Int)
-    ret = 42 - x
-    ret + x
-end
-                    </code></pre>
-                </section>
-                <section>
-                    Slide 2<br>
-                    <a href="https://www.perdu.com">This is a link</a>
-                </section>
-                <section>
-                    <h1>Title of the slide</h1>
-                    <p>Sample unordered list:</p>
-                    <ul>
-                        <li>First item</li>
-                        <li>Second item</li>
-                    </ul>
-                </section>
-                <section>
-                    <p>This integral is not as easy as \( 2 + \frac 4 2 = 4 \) &#x1F614;</p>
-                    $$\begin{equation*}
-                    \int_{-\infty}^{\infty} e^{\frac{-x^2}{2}} \text d x
-                    \end{equation*}$$
-                </section>
-                <section data-markdown>
-                    <textarea data-template>
-## Slide 1
-A paragraph with some text and a [link](http://hakim.se).
----
-## Slide 2
-A reference<span class="reference">1</span>
----
-## Slide 3
-Another reference<span class="reference">3</span>
-                    </textarea>
-                </section>
-
-                <section id="references">
-                    <section class="title-slide">
-                        <h1>References</h1>
-                    </section>
-                    <section>
-                        <ol>
-                            <li>Croucha, D. J. M., &#38; Bodmer, W. F. (2020). Polygenic inheritance, GWAS, polygenic risk scores, and the search for functional variants. <i>Proceedings of the National Academy of Sciences of the United States of America</i>, <i>117</i>(32), 18924–18933. <a href="https://doi.org/10.1073/pnas.2005634117">https://doi.org/10.1073/pnas.2005634117</a></li>
-                            <li>Meuwissen, T. H. E., Hayes, B. J., &#38; Goddard, M. E. (2001). Prediction of Total Genetic Value Using Genome-Wide Dense Marker Maps. <i>Genetics</i>, <i>157</i>(4), 1819–1829. <a href="https://doi.org/10.1093/GENETICS/157.4.1819">https://doi.org/10.1093/GENETICS/157.4.1819</a></li>
-                        </ol>
-                    </section>
-                    <section>
-                        <ol start = 3>
-                            <li>Slatkin, M. (2008). Exchangeable models of complex inherited diseases. <i>Genetics</i>, <i>179</i>(4), 2253–2261. <a href="https://doi.org/10.1534/genetics.107.077719">https://doi.org/10.1534/genetics.107.077719</a></li>
-                            <li>Visscher, P. M., &#38; Wray, N. R. (2016). Concepts and Misconceptions about the Polygenic Additive Model Applied to Disease. <i>Human Heredity</i>, <i>80</i>(4), 165–170. <a href="https://doi.org/10.1159/000446931">https://doi.org/10.1159/000446931</a></li>
-                        </ol>
-                    </section>
-                </section>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/mytheme.css" id="theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="cover">
+          <h1>Cours 1 &mdash; Introduction</h1>
+          <h2>Patrick Fournier</h2>
+          <h3>MAT8186 &mdash; Techniques avancées en programmation statistiques R </h3>
+          <h3>Automne 2022</h3>
+        </section>
+        <section>
+          <section class="title-slide">
+            <h1>Modalités et documents administratifs</h1>
+          </section>
+          <section>
+            <h1>Horaire et locaux</h1>
+            <dl>
+              <dt>Local</dt><dd>PKS1545</dd>
+              <dt>Horaire</dt>
+              <dd class="no-after">de 10h à 12h</dd>
+                <dl>
+                  <dt>Lundi</dt>
+                  <dd>12, 19 et 26 septembre, 3 octobre</dd>
+                  <dt>Jeudi</dt>
+                  <dd>8, 15, 22 et 29 septembre</dd>
+                </dl>
+            </dl>
+          </section>
+          <section>
+            <h1>Logiciels</h1>
+            <dl>
+              <dt><a href="https://mirror.rcg.sfu.ca/mirror/CRAN/">R</a></dt>
+              <dd>version >= 4.2.1 "Funny-Looking Kid"</dd>
+              <dt><a href="https://www.rstudio.com/">RStudio</a></dt>
+              <dd>version >= 2022.07.1-554, change de nom pour <a href="https://posit.co/">Posit</a> en octobre</dd>
+              <dt><a href="https://git-scm.com/">Git</a></dt>
+              <dd>version >= 2.37.3</dd>
+            </dl>
+          </section>
+          <section>
+            <h1>Ressources</h1>
+            <ul>
+              <li><a href="https://github.com/cours-patrickFournier/mat8186-r-avance">GitHub du cours</a></li>
+              <ul>
+                <li class="no-after">Slides</li>
+                <img src="assets/screenshot_cours.png" alt="Badges linking to course">
+              </ul>
+              <li>Externes</li>
+              <ul>
+                <li><a href="https://adv-r.hadley.nz/">Advanced R</a></li>
+                <li><a href="https://r-pkgs.org/">R Packages</a></li>
+                <li><a href="https://git-scm.com/docs">Git Reference</a></li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <h1>Documents administratifs</h1>
+            Deux documents importants:
+            <ol>
+              <li><a href="https://github.com/cours-patrickFournier/mat8186-r-avance/raw/automne2022/documents_administratifs/plan_cours.pdf">Plan de cours</a></li>
+              <li><a href="https://github.com/cours-patrickFournier/mat8186-r-avance/raw/automne2022/documents_administratifs/entente_evaluation.pdf">Entente d'évaluation</a></li>
+            </ol>
+            <br><br>
+            <span class="fragment fade-down">
+              J'ai besoin de 2 témoins pour <a href="mailto:commis-math@uqam.ca?subject=MAT8186-010 – Acceptation de l’entente d’évaluation&body=Par la présente, je, <PRÉNOM ET NOM> (<CODE PERMANENT>) confirme que la présente entente a été conclue pour le cours MAT8186-010 le 8 septembre 2022. Ce courriel tient lieu de signature de ma part.%0D%0A%0D%0ACordialement,%0D%0A%0D%0A<SIGNATURE>&cc=fournier.patrick@uqam.ca">confirmer l'entente d'évaluation.</a>
+            </span>
+            <br>
+            <span class="fragment fade-up">
+              (N'oubliez pas de <em>joindre l'entente</em>
+              (point 2<span style="color: #9558b2;">&#129045;&#129045;</span>)
+              à votre message &#x1f609;)
+            </span>
+          </section>
+        </section>
+        <section>
+          <section class="title-slide">
+            <h1>Introduction</h1>
+          </section>
+          <section>
+            <div class="r-stack">
+              <div class="fragment semi-fade-out" data-fragment-index="1">
+                <h1>Un peu d'histoire</h1>
+                <h2>Bell Labs</h2>
+                <ul>
+                  <li>Fondé en 1925 par AT&T</li>
+                  <li> 9 prix Nobels &amp; 4 prix Turing</li>
+                  <li>Mecque du développement technologique au 20<sup>e</sup> siècle</li>
+                </ul>
+              </div>
+              <img class="fragment fade-in" data-fragment-index="1" src="assets/transistor.jpg" alt="Vieux transistor" height="600" style="transform:rotate(5deg);">
+              <img class="fragment fade-in" data-fragment-index="2" src="assets/complex_number_calculator.jpg" alt="Vieux transistor" height="600" style="transform:rotate(-10deg);">
+              <img class="fragment fade-in" data-fragment-index="3" src="assets/cellulaire.jpg" alt="Vieux cell" height="600" style="transform:rotate(15deg);">
+              <img class="fragment fade-in" data-fragment-index="4" src="assets/bjarne.jpg" alt="Bjarne" height="600" style="transform:rotate(-7.5deg);">
             </div>
-        </div>
+          </section>
+          <section>
+            <div class="r-stack">
+              <div>
+                <h2>S</h2>
+                <ul>
+                  <li>Inventé par <em>John Chambers</em> au sein des Bell Labs</li>
+                  <li>Développé pour la <em>programmation statistique</em></li>
+                  <li>Objectif: <i>&ldquo;To turn ideas into software, quickly and faithfully&rdquo;</i></li>
+                </ul>
+              </div>
+              <div class="fragment fade-in">
+                <div class="fragment fade-out">
+                  <img src="assets/chambers.jpg" alt="John Chambers" height="700">
+                </div>
+              </div>
 
-        <div id="logo"><p>
-            Author (Institution)
-            <span class="separator"></span>
-            Session
-            <span class="separator"></span>
-            Event (Venue)
-            <span class="separator"></span>
-            Date
-        </p></div>
+              <aside class="notes">
+                <ul>
+                  <li>Inventé dans la seconde moitié des années '70</li>
+                  <li>John Chambers est Canadien! Né à Toronto en 1941</li>
+                  <li>Auparavant, Fortran était utilisé pour la programmation statistique</li>
+                  <li> Emphase sur le temps d'implémentation, pas le temps de calcul</li>
+                  <li>A rapport avec le niveau du langage</li>
+                </ul>
+              </aside>
+          </section>
+          <section>
+            <div class="r-stack">
+              <div class="fragment semi-fade-out" data-fragment-index="2">
+                <h1>Concepts de base &#x1f913;</h1>
+                <h2>Niveaux de langage</h2>
+                <ul>
+                  <li>Compromis entre <em>convivialité</em> et <em>performance</em></li>
+                  <li>Facile pour nous vs Facile pour l'ordinateur</li>
+                </ul>
 
-        <div id="qrcode" alt="Slides"></div>
+                <br><br>
+                machine <span style="color:#9558b2;">&#x2b95;</span>
+                assembleur <span style="color:#9558b2;">&#x2b95;</span>
+                bas niveau <span style="color:#9558b2;">&#x2b95;</span>
+                haut niveau
 
-        <script src="dist/reveal.js"></script>
-        <script src="plugin/notes/notes.js"></script>
-        <script src="plugin/highlight/highlight.js"></script>
-        <script src="plugin/math/math.js"></script>
-        <script src="plugin/markdown/markdown.js"></script>
-        <script src="plugin/spotlight/spotlight.js"></script>
-        <script src="node_modules/reveal.js-menu/menu.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="dist/perso.js"></script>
-        <script type="text/javascript">qrcode.makeCode("www.patrickfournier.ca");</script>
-        <script>
-         // More info about initialization & config:
-         // - https://revealjs.com/initialization/
-         // - https://revealjs.com/config/
-         Reveal.initialize({
-             hash: true,
+                <br>
+                Examples:
+                <dl>
+                  <dt style="flex-basis:30%;">Assembleur</dt>
+                  <dd>ARM, x86, MIPS</dd>
+                  <dt style="flex-basis:30%;">Bas niveau</dt>
+                  <dd>C, Pascal, ALGOL</dd>
+                  <dt style="flex-basis:30%;">Haut niveau</dt>
+                  <dd>R, Python, C++, Java</dd>
+                </dl>
+              </div>
+              <div class="obox fragment fade-in-then-out" data-fragment-index="2">
+                Exemple: Calcul d'un nombre de Fibonacci sur x86 (<a href="https://en.wikipedia.org/wiki/Low-level_programming_language#Machine_code">source</a>):
+                <pre><code class="language-plaintext hljs" data-trim>
+                    8B542408 83FA0077 06B80000
+                    0000C383 FA027706 B8010000
+                    00C353BB 01000000 B9010000
+                    008D0419 83FA0376 078BD989
+                    C14AEBF1 5BC3
+                </code></pre>
+              </div>
+              <div class="obox fragment fade-in-then-out" data-fragment-index="3">
+                Exemple: Calcul de la suite de Fibonacci en assembleur x86-64 (en partie, <a href="https://blog.seso.io/posts/creating-a-fibonacci-generator-in-assembly">source</a>):
+                <pre><code class="language-x86asm hljs" data-trim>
+                    xor %edx, %edx
+                    mov $10, %ebx
+                    div %ebx
+                    addb $48, %dl
+                    movb %dl, (%esp, %ecx, 1)
+                    dec %ecx
+                    cmp $0, %ax
+                    je .done_pl
+                    jmp .loop_pl
+                </code></pre>
+              </div>
+              <div class="obox fragment fade-in-then-out" data-fragment-index="4">
+                Exemple: Calcul de la suite de Fibonacci en Haskell:
+                <pre><code class="language-haskell hljs" data-trim style="font-size:39px">
+                    fib :: Integer -> Integer
+                    fib 0 = 0
+                    fib 1 = 1
+                    fib n = fib (n - 1) + fib (n - 2)
+                </code></pre>
+              </div>
 
-             // Learn about plugins: https://revealjs.com/plugins/
-             plugins: [ RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealMarkdown, RevealNotes ],
+              <aside class="notes">
+                <dl>
+                  <dt>Langage machine</dt>
+                  <dd><ul>
+                      <li>Directement exécuté par la machine</li>
+                      <li>Très difficile à comprendre pour un humain</li>
+                      <li>Dépend directement de la machine sur laquelle on travaille</li>
+                  </ul></dd>
+                  <dt>Langage de haut niveau</dt>
+                  <dd><ul>
+                      <li>Éloigné du langage machine, n'a presque rien à voir avec celui-ci</li>
+                      <li>Conçu pour faciliter la vie du programmeur</li>
+                      <li>Relativement indépendant de l'architecture</li>
+                  </ul></dd>
+                </dl>
+              </aside>
+          </section>
+          <section>
+            <h2>Compilation vs interprétation</h2>
+            <ul>
+              <li>Ordinateur exécute <em>uniquement</em> du code machine</li>
+              <li>Tout autre langage doit être &laquo;traduit&raquo;: <em>compilation</em></li>
+              <li>Autre possibilité: faire exécuter le code par un logiciel auxiliaire</li>
+            </ul>
 
-             menu: {
-                 // Specifies which side of the presentation the menu will
-                 // be shown. Use 'left' or 'right'.
-                 side: 'left',
+            <br><br>
+            <span class="fragment fade-in r-fit-text">R est un tel logiciel auxiliaire!</span>
 
-                 // Specifies the width of the menu.
-                 // Can be one of the following:
-                 // 'normal', 'wide', 'third', 'half', 'full', or
-                 // any valid css length value
-                 width: 'normal',
+            <aside class="notes">
+              <ul>
+                <li>Logiciel auxiliaire = interpréteur</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Paradigmes</h2>
+            <ul>
+              <li>Manière de formuler une solution à un problème dans un langage de programmation</li>
+              <li class="column">R est multiparadigme</li>
+              <ul>
+                <li>Impératif</li>
+                <li>Fonctionnel</li>
+                <li>Réflectif</li>
+                <li>Orienté objet</li>
+                <li>Array programming</li>
+              </ul>
+            </ul>
 
-                 // Add slide numbers to the titles in the slide list.
-                 // Use 'true' or format string (same as reveal.js slide numbers)
-                 numbers: false,
+            <aside class="notes">
+              <dl>
+                <dt>Impératif</dt>
+                <dd>Logiciel \( \Leftrightarrow \) modifications successives de son propre état</dd>
+                <dt>Fonctionnel</dt>
+                <dd>Logiciel \( \Leftrightarrow \) composition de fonctions</dd>
+                <dt>Réflectif</dt>
+                <dd>Un logiciel peut examiner et modifier sa structure</dd>
+                <dt>Orienté objet</dt>
+                <dd>Le concept d'objet joue un rôle central</dd>
+                <dt>Array programming</dt>
+                <dd>Opérations sur des ensembles de valeurs</dd>
+              </dl>
+            </aside>
+          </section>
+          <section>
+            <h1>R en bref</h1>
+            R est:
+            <br>
+            <ul>
+              <li>Un langage de <em>haut niveau</em></li>
+              <li>Un langage <em>interprété</em></li>
+              <li>Un langage <em>multiparadigme</em></li>
+              <li>Une <em>implémentation</em> de S
+            </ul>
 
-                 // Specifies which slide elements will be used for generating
-                 // the slide titles in the menu. The default selects the first
-                 // heading element found in the slide, but you can specify any
-                 // valid css selector and the text from the first matching
-                 // element will be used.
-                 // Note: that a section data-menu-title attribute or an element
-                 // with a menu-title class will take precedence over this option
-                 titleSelector: 'h1, h2',
+            <aside class="notes">
+              <ul>
+                <li>R vise à être beaucoup plus près du langage mathématique que du langage machine</li>
+                <li>2 premiers points: en lien avec l'objectif original de R (&ldquo;To turn ideas into software, quickly and faithfully&rdquo;)</li>
+                <li>R, c'est S tout comme CPython est Python!</li>
+              </ul>
+            </aside>
+          </section>
 
-                 // If slides do not have a matching title, attempt to use the
-                 // start of the text content as the title instead
-                 useTextContentForMissingTitles: false,
+          <section>
+            <h1>Git et GitHub &#x1f631;</h1>
+            <ul>
+              <li>Git: système de gestion des versions</li>
+              <li>Git \( \neq \) GitHub</li>
+              <li class="column"><a href="https://git-scm.com/docs/gitglossary">Glosaire</a> et commandes importantes</li>
+              <ul>
+                <li><a href="https://git-scm.com/docs/git-clone">git clone</a></li>
+                <li><a href="https://git-scm.com/docs/git-add">git add</a></li>
+                <li><a href="https://git-scm.com/docs/git-commit">git commit</a></li>
+                <li><a href="https://git-scm.com/docs/git-pull">git pull</a></li>
+                <li><a href="https://git-scm.com/docs/git-push">git push</a></li>
+                <li><a href="https://git-scm.com/docs/git-remote">git remote</a></li>
+              </ul>
+            </ul>
 
-                 // Hide slides from the menu that do not have a title.
-                 // Set to 'true' to only list slides with titles.
-                 hideMissingTitles: true,
+            <aside class="notes">
+              <ul>
+                <li>Git sert à gérer les différentes versions d'un groupe de fichiers</li>
+                <li>GitHub permet de stocker des copies de dépôts à distance</li>
+                <li>GitHub est une peu comme Dropbox mais plus structuré</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Dépôt Git</h2>
+            <ul>
+              <li>&ldquo;Repository&rdquo;, &ldquo;repo&rdquo;</li>
+              <li class="column">Conteneur pour un ensemble de fichiers, par exemple</li>
+              <ul>
+                <li>Répertoire local</li>
+                <li>Dépôt GitHub</li>
+              </ul>
+              <li><em>Clône</em> \( := \) copie d'un dépôt</li>
+              <li class="column">Cas typique</li>
+              <ul>
+                <li>Un dépôt sur GitHub</li>
+                <li>Un clône local</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <div class="r-stack">
+              <div class="fragment semi-fade-out" data-fragment-index="2">
+                <h2>Workflow typique</h2>
+                <ol>
+                  <li>Mettre à jour le dépôt local: <code class="language-bash hljs">git pull</code></li>
+                  <li>Modifier le dépôt local &#x1f4bb;</li>
+                  <li>Commettre les modifications: <code class="language-bash hljs">git commit</code></li>
+                  <li>Rincer et répéter &#x1f6bf;</li>
+                  <li>Envoyer les modifications commises vers GitHub: <code class="language-bash hljs">git push</code></li>
+                </ol>
+              </div>
+              <div class="fragment fade-in" data-fragment-index="2">
+                <img src="assets/git.gif" alt="Git dance" height="573">
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
 
-                 // Adds markers to the slide titles to indicate the
-                 // progress through the presentation. Set to 'false'
-                 // to hide the markers.
-                 markers: true,
+    <div id="logo"><p>
+        Patrick Fournier (Université du Québec à Montréal)
+        <span class="separator"></span>
+        MAT8186
+        <span class="separator"></span>
+        Automne 2022
+    </p></div>
 
-                 // Specify custom panels to be included in the menu, by
-                 // providing an array of objects with 'title', 'icon'
-                 // properties, and either a 'src' or 'content' property.
-                 custom: false,
+    <div id="qrcode" alt="Slides"></div>
 
-                 // Specifies the themes that will be available in the themes
-                 // menu panel. Set to 'true' to show the themes menu panel
-                 // with the default themes list. Alternatively, provide an
-                 // array to specify the themes to make available in the
-                 // themes menu panel, for example...
-                 //
-                 // [
-                 //     { name: 'Black', theme: 'dist/theme/black.css' },
-                 //     { name: 'White', theme: 'dist/theme/white.css' },
-                 //     { name: 'League', theme: 'dist/theme/league.css' },
-                 //     {
-                 //       name: 'Dark',
-                 //       theme: 'lib/reveal.js/dist/theme/black.css',
-                 //       highlightTheme: 'lib/reveal.js/plugin/highlight/monokai.css'
-                 //     },
-                 //     {
-                 //       name: 'Code: Zenburn',
-                 //       highlightTheme: 'lib/reveal.js/plugin/highlight/zenburn.css'
-                 //     }
-                 // ]
-                 //
-                 // Note: specifying highlightTheme without a theme will
-                 // change the code highlight theme while leaving the
-                 // presentation theme unchanged.
-                 themes: false,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/spotlight/spotlight.js"></script>
+    <script src="node_modules/reveal.js-menu/menu.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="dist/perso.js"></script>
+    <script type="text/javascript">qrcode.makeCode("www.patrickfournier.ca");</script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+          hash: true,
 
-                 // Specifies the path to the default theme files. If your
-                 // presentation uses a different path to the standard reveal
-                 // layout then you need to provide this option, but only
-                 // when 'themes' is set to 'true'. If you provide your own
-                 // list of themes or 'themes' is set to 'false' the
-                 // 'themesPath' option is ignored.
-                 themesPath: 'dist/theme/',
+          // Learn about plugins: https://revealjs.com/plugins/
+          plugins: [ RevealHighlight, RevealMath.KaTeX, RevealMenu, RevealMarkdown, RevealNotes ],
 
-                 // Specifies if the transitions menu panel will be shown.
-                 // Set to 'true' to show the transitions menu panel with
-                 // the default transitions list. Alternatively, provide an
-                 // array to specify the transitions to make available in
-                 // the transitions panel, for example...
-                 // ['None', 'Fade', 'Slide']
-                 transitions: false,
+          menu: {
+              // Specifies which side of the presentation the menu will
+              // be shown. Use 'left' or 'right'.
+              side: 'left',
 
-                 // Adds a menu button to the slides to open the menu panel.
-                 // Set to 'false' to hide the button.
-                 openButton: true,
+              // Specifies the width of the menu.
+              // Can be one of the following:
+              // 'normal', 'wide', 'third', 'half', 'full', or
+              // any valid css length value
+              width: 'normal',
 
-                 // If 'true' allows the slide number in the presentation to
-                 // open the menu panel. The reveal.js slideNumber option must
-                 // be displayed for this to take effect
-                 openSlideNumber: false,
+              // Add slide numbers to the titles in the slide list.
+              // Use 'true' or format string (same as reveal.js slide numbers)
+              numbers: false,
 
-                 // If true allows the user to open and navigate the menu using
-                 // the keyboard. Standard keyboard interaction with reveal
-                 // will be disabled while the menu is open.
-                 keyboard: true,
+              // Specifies which slide elements will be used for generating
+              // the slide titles in the menu. The default selects the first
+              // heading element found in the slide, but you can specify any
+              // valid css selector and the text from the first matching
+              // element will be used.
+              // Note: that a section data-menu-title attribute or an element
+              // with a menu-title class will take precedence over this option
+              titleSelector: 'h1, h2',
 
-                 // Normally the menu will close on user actions such as
-                 // selecting a menu item, or clicking the presentation area.
-                 // If 'true', the sticky option will leave the menu open
-                 // until it is explicitly closed, that is, using the close
-                 // button or pressing the ESC or m key (when the keyboard
-                 // interaction option is enabled).
-                 sticky: false,
+              // If slides do not have a matching title, attempt to use the
+              // start of the text content as the title instead
+              useTextContentForMissingTitles: false,
 
-                 // If 'true' standard menu items will be automatically opened
-                 // when navigating using the keyboard. Note: this only takes
-                 // effect when both the 'keyboard' and 'sticky' options are enabled.
-                 autoOpen: true,
+              // Hide slides from the menu that do not have a title.
+              // Set to 'true' to only list slides with titles.
+              hideMissingTitles: true,
 
-                 // If 'true' the menu will not be created until it is explicitly
-                 // requested by calling RevealMenu.init(). Note this will delay
-                 // the creation of all menu panels, including custom panels, and
-                 // the menu button.
-                 delayInit: false,
+              // Adds markers to the slide titles to indicate the
+              // progress through the presentation. Set to 'false'
+              // to hide the markers.
+              markers: true,
 
-                 // If 'true' the menu will be shown when the menu is initialised.
-                 openOnInit: false,
+              // Specify custom panels to be included in the menu, by
+              // providing an array of objects with 'title', 'icon'
+              // properties, and either a 'src' or 'content' property.
+              custom: false,
 
-                 // By default the menu will load it's own font-awesome library
-                 // icons. If your presentation needs to load a different
-                 // font-awesome library the 'loadIcons' option can be set to false
-                 // and the menu will not attempt to load the font-awesome library.
-                 loadIcons: true
-             },
+              // Specifies the themes that will be available in the themes
+              // menu panel. Set to 'true' to show the themes menu panel
+              // with the default themes list. Alternatively, provide an
+              // array to specify the themes to make available in the
+              // themes menu panel, for example...
+              //
+              // [
+              //     { name: 'Black', theme: 'dist/theme/black.css' },
+              //     { name: 'White', theme: 'dist/theme/white.css' },
+              //     { name: 'League', theme: 'dist/theme/league.css' },
+              //     {
+              //       name: 'Dark',
+              //       theme: 'lib/reveal.js/dist/theme/black.css',
+              //       highlightTheme: 'lib/reveal.js/plugin/highlight/monokai.css'
+              //     },
+              //     {
+              //       name: 'Code: Zenburn',
+              //       highlightTheme: 'lib/reveal.js/plugin/highlight/zenburn.css'
+              //     }
+              // ]
+              //
+              // Note: specifying highlightTheme without a theme will
+              // change the code highlight theme while leaving the
+              // presentation theme unchanged.
+              themes: false,
 
-             spotlight: {
-                 // size of the spotlight
-                 size: 60,
+              // Specifies the path to the default theme files. If your
+              // presentation uses a different path to the standard reveal
+              // layout then you need to provide this option, but only
+              // when 'themes' is set to 'true'. If you provide your own
+              // list of themes or 'themes' is set to 'false' the
+              // 'themesPath' option is ignored.
+              themesPath: 'dist/theme/',
 
-                 // true: Locks the mouse pointer inside the presentation
-                 // there is by design (Pointer Lock API) no spotlightCursor and presentingCursor
-                 // displayed regardless of the configured values
-                 lockPointerInsideCanvas: false,
+              // Specifies if the transitions menu panel will be shown.
+              // Set to 'true' to show the transitions menu panel with
+              // the default transitions list. Alternatively, provide an
+              // array to specify the transitions to make available in
+              // the transitions panel, for example...
+              // ['None', 'Fade', 'Slide']
+              transitions: false,
 
-                 // toggle spotlight by holding down the mouse key
-                 toggleSpotlightOnMouseDown: true,
+              // Adds a menu button to the slides to open the menu panel.
+              // Set to 'false' to hide the button.
+              openButton: true,
 
-                 // the keyCode pressed and held to turn on spotlight, disabled when set to false
-                 // Problems with this config? Maybe your touchpad is disabled on keypress?
-                 spotlightOnKeyPressAndHold: false,
+              // If 'true' allows the slide number in the presentation to
+              // open the menu panel. The reveal.js slideNumber option must
+              // be displayed for this to take effect
+              openSlideNumber: false,
 
-                 // choose the cursor when spotlight is on. Maybe "crosshair"?
-                 spotlightCursor: 'crosshair',
+              // If true allows the user to open and navigate the menu using
+              // the keyboard. Standard keyboard interaction with reveal
+              // will be disabled while the menu is open.
+              keyboard: true,
 
-                 // choose the cursor when spotlight is off and in presentation mode. Maybe "default"?
-                 presentingCursor: 'none',
+              // Normally the menu will close on user actions such as
+              // selecting a menu item, or clicking the presentation area.
+              // If 'true', the sticky option will leave the menu open
+              // until it is explicitly closed, that is, using the close
+              // button or pressing the ESC or m key (when the keyboard
+              // interaction option is enabled).
+              sticky: false,
 
-                 // true: initially in presentation mode, will also be ture if this is not set and toggleSpotlightOnMouseDown is true
-                 initialPresentationMode: false,
+              // If 'true' standard menu items will be automatically opened
+              // when navigating using the keyboard. Note: this only takes
+              // effect when both the 'keyboard' and 'sticky' options are enabled.
+              autoOpen: true,
 
-                 // true: disable selecting in presentation mode
-                 disablingUserSelect: true,
+              // If 'true' the menu will not be created until it is explicitly
+              // requested by calling RevealMenu.init(). Note this will delay
+              // the creation of all menu panels, including custom panels, and
+              // the menu button.
+              delayInit: false,
 
-                 // set to a number as transition duration in ms to enable fade in and out, disabled when set to false
-                 fadeInAndOut: 100,
+              // If 'true' the menu will be shown when the menu is initialised.
+              openOnInit: false,
 
-                 // enable pointer mode
-                 useAsPointer: false,
+              // By default the menu will load it's own font-awesome library
+              // icons. If your presentation needs to load a different
+              // font-awesome library the 'loadIcons' option can be set to false
+              // and the menu will not attempt to load the font-awesome library.
+              loadIcons: true
+          },
 
-                 // pointer color (If pointer mode enabled)
-                 pointerColor: 'red'
-             },
+          spotlight: {
+              // size of the spotlight
+              size: 60,
 
-             keyboard: {
-                 // alternative to toggleSpotlightOnMouseDown:
-                 // toggle spotlight by pressing key 'c'
-                 67: function() { RevealSpotlight.toggleSpotlight() },
+              // true: Locks the mouse pointer inside the presentation
+              // there is by design (Pointer Lock API) no spotlightCursor and presentingCursor
+              // displayed regardless of the configured values
+              lockPointerInsideCanvas: false,
 
-                 // enter/leave presentation mode by pressing key 'p'
-                 80: function() {
-                     RevealSpotlight.togglePresentationMode();
-                 },
-             },
+              // toggle spotlight by holding down the mouse key
+              toggleSpotlightOnMouseDown: true,
 
-             // CSS properties that can be auto-animated. Position & scale
-             // is matched separately so there's no need to include styles
-             // like top/right/bottom/left, width/height or margin.
-             autoAnimateStyles: [
-                 "opacity",
-                 "color",
-                 "background-color",
-                 "padding",
-                 "font-size",
-                 "line-height",
-                 "letter-spacing",
-                 "border-width",
-                 "border-color",
-                 "border-radius",
-                 "outline",
-                 "outline-offset"
-             ],
+              // the keyCode pressed and held to turn on spotlight, disabled when set to false
+              // Problems with this config? Maybe your touchpad is disabled on keypress?
+              spotlightOnKeyPressAndHold: false,
 
-             help: true,
+              // choose the cursor when spotlight is on. Maybe "crosshair"?
+              spotlightCursor: 'crosshair',
 
-             autoAnimate: false,
+              // choose the cursor when spotlight is off and in presentation mode. Maybe "default"?
+              presentingCursor: 'none',
 
-             transition: "slide",
+              // true: initially in presentation mode, will also be ture if this is not set and toggleSpotlightOnMouseDown is true
+              initialPresentationMode: false,
 
-             backgroundTransition: 'zoom',
+              // true: disable selecting in presentation mode
+              disablingUserSelect: true,
 
-             katex: {
-                 local: "node_modules/katex"
-             }
-         });
-        </script>
-    </body>
+              // set to a number as transition duration in ms to enable fade in and out, disabled when set to false
+              fadeInAndOut: 100,
+
+              // enable pointer mode
+              useAsPointer: false,
+
+              // pointer color (If pointer mode enabled)
+              pointerColor: 'red'
+          },
+
+          keyboard: {
+              // alternative to toggleSpotlightOnMouseDown:
+              // toggle spotlight by pressing key 'c'
+              67: function() { RevealSpotlight.toggleSpotlight() },
+
+              // enter/leave presentation mode by pressing key 'p'
+              80: function() {
+                  RevealSpotlight.togglePresentationMode();
+              },
+          },
+
+          // CSS properties that can be auto-animated. Position & scale
+          // is matched separately so there's no need to include styles
+          // like top/right/bottom/left, width/height or margin.
+          autoAnimateStyles: [
+              "opacity",
+              "color",
+              "background-color",
+              "padding",
+              "font-size",
+              "line-height",
+              "letter-spacing",
+              "border-width",
+              "border-color",
+              "border-radius",
+              "outline",
+              "outline-offset"
+          ],
+
+          help: true,
+
+          autoAnimate: false,
+
+          transition: "slide",
+
+          backgroundTransition: 'zoom',
+
+          katex: {
+              local: "node_modules/katex"
+          }
+      });
+    </script>
+  </body>
 </html>
