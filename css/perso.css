@@ -44,6 +44,16 @@ i:not(.fas):not(.fa-circle) {
     border: 10px solid #9558b2;
 
     margin: auto;
+    border-radius: 10px;
+
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Menu */
@@ -157,13 +167,14 @@ a:hover {
 /* Lists */
 ul, ol, dl {
     padding-left: 1em;
+    line-height: 3ex;
 }
 
 ul li::marker, ol li::marker, dl dt::marker {
     color: #8fbcbb;
 }
 
-ul li::marker, dl dt::marker {
+ul > li::marker, dl > dt::marker {
     content: "#'  ";
     font-weight: normal;
 }
@@ -231,19 +242,33 @@ dl dl dt::marker {
 }
 
 .no-after:after {
-    content: "";
+    content: none !important;
 }
 
 .column:after {
     content: ":" !important;
 }
 
+.semicolumn:after {
+    content: ";" !important;
+}
+
+.questionmark:after {
+    content: "?" !important;
+}
+
+.period:after {
+    content: "." !important;
+}
+
 /* Code */
 pre.code-wrapper {
     border-radius: var(--b-radius);
+
+    width: 100%;
 }
 
-pre.code-wrapper code, code.hljs {
+pre.code-wrapper code.hljs, code.hljs {
     border-style: dotted;
     border-width: 2px;
     border-radius: var(--b-radius);
@@ -251,12 +276,14 @@ pre.code-wrapper code, code.hljs {
     overflow: hidden;
     text-overflow: ellipsis;
 
+    padding: 0.5em !important;
+
     background-color: rgba(124, 125, 126, 0.1);
 }
 
 code.hljs {
     display: inline;
-    padding: 0;
+    padding: 0 !important;
     border-radius: 0;
 }
 
